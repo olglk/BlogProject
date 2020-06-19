@@ -29,7 +29,7 @@ public class TagController {
         return tagRepository.findAll(pageable);
     }
 
-    @GetMapping("/getbyid")
+    @GetMapping("/getbyid/{tagId}")
     public Tag getTagById(@PathVariable (value = "tagId") Long tagId) {
         return tagRepository.findById(tagId).orElseThrow(NoSuchElementException::new);
     }
