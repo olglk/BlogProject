@@ -3,7 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.model.Post;
 import com.example.demo.repository.PostRepository;
-//import lombok.extern.log4j.Log4j2;
+import lombok.extern.log4j.Log4j2;
 import com.example.demo.repository.TagRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -16,7 +16,7 @@ import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping("/post")
-//@Log4j2
+@Log4j2
 public class PostController {
 
     PostRepository postRepository;
@@ -29,13 +29,17 @@ public class PostController {
 
     @GetMapping("/getall")
     public Page<Post> getAllPosts(Pageable pageable) {
-        //log.info("INFO");
+        log.info("getAllPosts");
         return postRepository.findAll(pageable);
     }
 
     @GetMapping("/getbyid/{postId}")
     public Post getPostById(@PathVariable (value = "postId") Long postId) {
-        return postRepository.findById(postId).orElseThrow(NoSuchElementException::new);
+        log.info("getPostById: " + postId);
+        return postRepository.findById(postId).orElseThrow(() -> {
+            log.error("getPostById: " + postId + " NoSuchElementException");
+            return new NoSuchElementException("Post with the current ID: " + postId + " is not found");
+        });
     }
 
     @PostMapping

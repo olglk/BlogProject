@@ -4,6 +4,7 @@ import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.model.Comment;
 import com.example.demo.repository.CommentRepository;
 import com.example.demo.repository.PostRepository;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +15,7 @@ import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping("/comment")
+@Log4j2
 public class CommentController {
     CommentRepository commentRepository;
     PostRepository postRepository;
@@ -25,12 +27,17 @@ public class CommentController {
 
     @GetMapping("/getall")
     public Page<Comment> getAllComments(Pageable pageable) {
+        log.info("getAllComments");
         return commentRepository.findAll(pageable);
     }
 
-    @GetMapping("/getbyid")
+    @GetMapping("/getbyid/{commentId}")
     public Comment getCommentById(@PathVariable (value = "commentId") Long commentId) {
-        return commentRepository.findById(commentId).orElseThrow(NoSuchElementException::new);
+        log.info("getCommentById: " + commentId);
+        return commentRepository.findById(commentId).orElseThrow(() -> {
+            log.error("getCommentById: " + commentId + " NoSuchElementException");
+            return new NoSuchElementException("Comment with the current ID: " + commentId + " is not found");
+        });
     }
 
     @GetMapping("posts/{postId}")

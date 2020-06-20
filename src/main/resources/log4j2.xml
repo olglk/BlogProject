@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Properties>
+        <Property name="LOG_PATTERN">%d{yyyy-MM-dd HH:mm:ss} %-5p %m%n</Property>
+    </Properties>
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT" follow="true">
+        <PatternLayout pattern="${LOG_PATTERN}"/>
+        </Console>
+<!--        <File name="LogSpringToFile" fileName="logs/spring.log">-->
+<!--            <PatternLayout>-->
+<!--                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>-->
+<!--            </PatternLayout>-->
+<!--            <PatternLayout>-->
+<!--                <Pattern>%d{yyyy-MM-dd HH:mm:ss} %-5p %m%n</Pattern>-->
+<!--            </PatternLayout>-->
+<!--        </File>-->
+        <RollingFile
+                name="rollingFileSpring"
+                fileName="logs/spring.log"
+                filePattern="logs/spring.%d{dd-MMM}.log.gz"
+                ignoreExceptions="false">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy filePattern="logs/spring.%d{dd-MMM-hh}.log.gz" />
+            </Policies>
+            <DefaultRolloverStrategy max="5" />
+        </RollingFile>
+        <RollingFile
+                name="rollingFileHibernate"
+                fileName="logs/hibernate.log"
+                filePattern="logs/hibernate.%d{dd-MMM}.log.gz"
+                ignoreExceptions="false">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy filePattern="logs/hibernate.%d{dd-MMM-hh}.log.gz" />
+            </Policies>
+            <DefaultRolloverStrategy max="5" />
+        </RollingFile>
+        <RollingFile
+                name="rollingFileCommentController"
+                fileName="logs/commentController.log"
+                filePattern="logs/commentController.%d{dd-MMM}.log.gz"
+                ignoreExceptions="false">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy filePattern="logs/commentController.%d{dd-MMM-hh}.log.gz" />
+            </Policies>
+            <DefaultRolloverStrategy max="5" />
+        </RollingFile>
+        <RollingFile
+                name="rollingFilePostController"
+                fileName="logs/postController.log"
+                filePattern="logs/postController.%d{dd-MMM}.log.gz"
+                ignoreExceptions="false">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy filePattern="logs/postController.%d{dd-MMM-hh}.log.gz" />
+            </Policies>
+            <DefaultRolloverStrategy max="5" />
+        </RollingFile>
+        <RollingFile
+                name="rollingFileTagController"
+                fileName="logs/tagController.log"
+                filePattern="logs/tagController.%d{dd-MMM}.log.gz"
+                ignoreExceptions="false">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy filePattern="logs/tagController.%d{dd-MMM-hh}.log.gz" />
+            </Policies>
+            <DefaultRolloverStrategy max="5" />
+        </RollingFile>
+        <RollingFile
+                name="rollingFileUserController"
+                fileName="logs/userController.log"
+                filePattern="logs/userController.%d{dd-MMM}.log.gz"
+                ignoreExceptions="false">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy filePattern="logs/userController.%d{dd-MMM-hh}.log.gz" />
+            </Policies>
+            <DefaultRolloverStrategy max="5" />
+        </RollingFile>
+        <RollingFile
+                name="rollingFileUserProfileController"
+                fileName="logs/userProfileController.log"
+                filePattern="logs/userProfileController.%d{dd-MMM}.log.gz"
+                ignoreExceptions="false">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy filePattern="logs/userProfileController.%d{dd-MMM-hh}.log.gz" />
+            </Policies>
+            <DefaultRolloverStrategy max="5" />
+        </RollingFile>
+    </Appenders>
+
+    <Loggers>
+        <Logger name="org.springframework.boot" level="info">
+            <AppenderRef ref="rollingFileSpring"/>
+        </Logger>
+        <Logger name="org.hibernate" level="info">
+            <AppenderRef ref="rollingFileHibernate"/>
+        </Logger>
+        <Logger name="com.example.demo.controller.CommentController" level="info">
+            <AppenderRef ref="rollingFileCommentController"/>
+        </Logger>
+        <Logger name="com.example.demo.controller.PostController" level="info">
+            <AppenderRef ref="rollingFilePostController"/>
+        </Logger>
+        <Logger name="com.example.demo.controller.TagController" level="info">
+            <AppenderRef ref="rollingFileTagController"/>
+        </Logger>
+        <Logger name="com.example.demo.controller.UserProfileController" level="info">
+            <AppenderRef ref="rollingFileUserProfileController"/>
+        </Logger>
+        <Root level="INFO">
+<!--            <AppenderRef ref="Console"/>-->
+        </Root>
+    </Loggers>
+</Configuration>

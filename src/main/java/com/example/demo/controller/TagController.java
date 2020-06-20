@@ -4,6 +4,7 @@ import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.model.Tag;
 import com.example.demo.repository.PostRepository;
 import com.example.demo.repository.TagRepository;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +15,7 @@ import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping("/tag")
+@Log4j2
 public class TagController {
 
     TagRepository tagRepository;
@@ -26,12 +28,17 @@ public class TagController {
 
     @GetMapping("/getall")
     public Page<Tag> getAllTags(Pageable pageable) {
+        log.info("getAllTags");
         return tagRepository.findAll(pageable);
     }
 
     @GetMapping("/getbyid/{tagId}")
     public Tag getTagById(@PathVariable (value = "tagId") Long tagId) {
-        return tagRepository.findById(tagId).orElseThrow(NoSuchElementException::new);
+        log.info("getTagById: " + tagId);
+        return tagRepository.findById(tagId).orElseThrow(() -> {
+            log.error("getTagById: " + tagId + " oSuchElementException");
+            return new NoSuchElementException("Tag with the current ID: " + tagId + " was nor found");
+        });
     }
 
     @GetMapping("/posts/{postId}")
