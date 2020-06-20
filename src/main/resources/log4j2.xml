@@ -86,6 +86,7 @@
                 fileName="logs/userProfileController.log"
                 filePattern="logs/userProfileController.%d{dd-MMM}.log.gz"
                 ignoreExceptions="false">
+            <LevelRangeFilter minLevel="INFO" maxLevel="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
             <PatternLayout pattern="${LOG_PATTERN}"/>
             <Policies>
                 <TimeBasedTriggeringPolicy filePattern="logs/userProfileController.%d{dd-MMM-hh}.log.gz" />
@@ -110,7 +111,10 @@
         <Logger name="com.example.demo.controller.TagController" level="info">
             <AppenderRef ref="rollingFileTagController"/>
         </Logger>
-        <Logger name="com.example.demo.controller.UserProfileController" level="info">
+        <Logger name="com.example.demo.controller.UserController" level="info">
+            <AppenderRef ref="rollingFileUserController"/>
+        </Logger>
+        <Logger name="com.example.demo.controller.UserProfileController">
             <AppenderRef ref="rollingFileUserProfileController"/>
         </Logger>
         <Root level="INFO">
