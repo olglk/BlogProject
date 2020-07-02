@@ -1,15 +1,4 @@
-2020-06-20 12:25:15 INFO  HHH000204: Processing PersistenceUnitInfo [name: default]
-2020-06-20 12:25:16 INFO  HHH000412: Hibernate ORM core version 5.4.17.Final
-2020-06-20 12:25:16 INFO  HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
-2020-06-20 12:25:19 INFO  HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
-2020-06-20 12:25:23 INFO  HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2020-06-20 12:31:13 INFO  HHH000204: Processing PersistenceUnitInfo [name: default]
-2020-06-20 12:31:13 INFO  HHH000412: Hibernate ORM core version 5.4.17.Final
-2020-06-20 12:31:13 INFO  HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
-2020-06-20 12:31:16 INFO  HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
-2020-06-20 12:31:19 INFO  HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2020-06-20 13:17:40 INFO  HHH000204: Processing PersistenceUnitInfo [name: default]
-2020-06-20 13:17:40 INFO  HHH000412: Hibernate ORM core version 5.4.17.Final
-2020-06-20 13:17:40 INFO  HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
-2020-06-20 13:17:43 INFO  HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
-2020-06-20 13:17:47 INFO  HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-07-02 15:11:28 INFO  HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-07-02 15:11:28 INFO  HHH000412: Hibernate ORM core version 5.4.17.Final
+2020-07-02 15:11:29 INFO  HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-07-02 15:11:32 INFO  HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect

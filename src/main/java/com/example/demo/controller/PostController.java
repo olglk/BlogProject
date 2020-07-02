@@ -30,7 +30,6 @@ public class PostController {
     @GetMapping("/getall")
     public Page<Post> getAllPosts(Pageable pageable) {
         log.info("getAllPosts");
-        log.error("error");
         return postRepository.findAll(pageable);
     }
 

@@ -25,7 +25,11 @@ public class UserProfileController {
 
     @GetMapping("/getall")
     public Page<UserProfile> getAllUserProfiles(Pageable pageable) {
+        log.fatal("fatal");
+        log.error("error");
+        log.warn("warn");
         log.info("getAllUserProfiles");
+        log.debug("debug");
         return userProfileRepository.findAll(pageable);
     }
 

@@ -44,5 +44,4 @@ public class Tag implements Serializable {
         posts.add(post);
         post.getTags().add(this);
     }
-
 }
